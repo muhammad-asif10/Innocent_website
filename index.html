@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Innocent — The Art of Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============ SPLASH SCREEN ============ -->
+    <div id="splash">
+        <div class="splash-content">
+            <h1 class="splash-title" id="splash-title" aria-label="Innocent"></h1>
+            <div class="splash-line" id="splash-line"></div>
+            <p class="splash-sub" id="splash-sub">Where Design Meets Perfection</p>
+        </div>
+    </div>
+
+    <!-- ============ NAVIGATION ============ -->
+    <nav id="navbar">
+        <div class="nav-brand">Innocent</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#practice-board">Practice Board</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#principles">Principles</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#exercises">Exercises</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <!-- Collapsed Theme Menu -->
+            <div class="theme-dropdown" id="theme-dropdown">
+                <button class="theme-toggle-btn" id="theme-toggle-btn" title="Theme & Display">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+                <div class="theme-menu" id="theme-menu">
+                    <div class="theme-menu-section">
+                        <span class="theme-menu-label">Theme</span>
+                        <div class="theme-colors">
+                            <button class="theme-btn" data-theme="dark" title="Midnight"><span style="background:#0a0a0a"></span></button>
+                            <button class="theme-btn" data-theme="light" title="Snow"><span style="background:#ffffff"></span></button>
+                            <button class="theme-btn" data-theme="red" title="Crimson"><span style="background:#e74c3c"></span></button>
+                            <button class="theme-btn" data-theme="blue" title="Ocean"><span style="background:#3498db"></span></button>
+                            <button class="theme-btn" data-theme="green" title="Emerald"><span style="background:#2ecc71"></span></button>
+                            <button class="theme-btn" data-theme="purple" title="Amethyst"><span style="background:#9b59b6"></span></button>
+                            <button class="theme-btn" data-theme="orange" title="Sunset"><span style="background:#f39c12"></span></button>
+                            <button class="theme-btn" data-theme="cyan" title="Arctic"><span style="background:#00cec9"></span></button>
+                        </div>
+                    </div>
+                    <div class="theme-menu-section">
+                        <span class="theme-menu-label">Contrast</span>
+                        <input type="range" id="contrast-slider" min="70" max="150" value="100">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </nav>
+
+    <!-- ============ FLOATING ORBS ============ -->
+    <div class="floating-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <section id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <h1 class="hero-title">Design is <span class="text-rotate" id="rotating-text">Everything</span></h1>
+            <p class="hero-sub">Great design isn't just how it looks — it's how it works, feels, and inspires.</p>
+            <a href="#practice-board" class="btn btn-primary">Start Creating →</a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <p>Scroll Down</p>
+        </div>
+    </section>
+
+    <!-- ============ PRACTICE BOARD (Sticky after hero) ============ -->
+    <section id="practice-board" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title reveal">Design Practice Board</h2>
+            <p class="section-subtitle reveal">A full-featured canvas to practice all design concepts in one place. Draw, add shapes, text, and experiment freely.</p>
+
+            <div class="board-wrapper reveal">
+                <!-- Toolbar -->
+                <div class="board-toolbar">
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Tool</span>
+                        <button class="board-tool active" data-tool="brush" title="Brush">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>
+                        </button>
+                        <button class="board-tool" data-tool="eraser" title="Eraser">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 20H7L3 16l8-8 9 9-4 4z"/><line x1="6" y1="11" x2="13" y2="18"/></svg>
+                        </button>
+                        <button class="board-tool" data-tool="rect" title="Rectangle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+                        </button>
+                        <button class="board-tool" data-tool="circle" title="Circle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                        </button>
+                        <button class="board-tool" data-tool="line" title="Line">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="19" x2="19" y2="5"/></svg>
+                        </button>
+                        <button class="board-tool" data-tool="text" title="Text">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                        </button>
+                        <button class="board-tool" data-tool="fill" title="Fill Canvas">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22l1-1h18l1 1"/><path d="M12 2v14"/><path d="M5 9l7 7 7-7"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Color</span>
+                        <input type="color" id="board-color" value="#667eea" class="board-color-input">
+                        <div class="board-quick-colors">
+                            <span class="qcolor" data-color="#ffffff" style="background:#ffffff"></span>
+                            <span class="qcolor" data-color="#000000" style="background:#000000"></span>
+                            <span class="qcolor" data-color="#ff6b6b" style="background:#ff6b6b"></span>
+                            <span class="qcolor" data-color="#667eea" style="background:#667eea"></span>
+                            <span class="qcolor" data-color="#4ecdc4" style="background:#4ecdc4"></span>
+                            <span class="qcolor" data-color="#ffa62b" style="background:#ffa62b"></span>
+                            <span class="qcolor" data-color="#a29bfe" style="background:#a29bfe"></span>
+                            <span class="qcolor" data-color="#fd79a8" style="background:#fd79a8"></span>
+                        </div>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Size</span>
+                        <input type="range" id="board-size" min="1" max="50" value="4" class="board-size-slider">
+                        <span id="board-size-val" class="toolbar-val">4px</span>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Opacity</span>
+                        <input type="range" id="board-opacity" min="0.1" max="1" step="0.1" value="1" class="board-opacity-slider">
+                        <span id="board-opacity-val" class="toolbar-val">100%</span>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Actions</span>
+                        <button class="board-action" id="board-undo" title="Undo">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                        </button>
+                        <button class="board-action" id="board-clear" title="Clear All">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                        </button>
+                        <button class="board-action" id="board-download" title="Download as PNG">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Canvas</span>
+                        <select id="board-canvas-bg" class="board-select">
+                            <option value="#ffffff">White</option>
+                            <option value="#0a0a0a">Black</option>
+                            <option value="#f5f5f7">Light Gray</option>
+                            <option value="#1a1a2e">Dark Blue</option>
+                            <option value="transparent">Transparent</option>
+                        </select>
+                        <label class="board-grid-toggle">
+                            <input type="checkbox" id="board-grid-toggle"> Grid
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Canvas Area -->
+                <div class="board-canvas-wrapper">
+                    <canvas id="board-canvas" width="1100" height="550"></canvas>
+                    <canvas id="board-grid-canvas" width="1100" height="550" class="board-grid-overlay"></canvas>
+                    <canvas id="board-temp-canvas" width="1100" height="550" class="board-temp-overlay"></canvas>
+                </div>
+
+                <!-- Status Bar -->
+                <div class="board-status">
+                    <span>Tool: <strong id="board-tool-name">Brush</strong></span>
+                    <span>Position: <strong id="board-pos">0, 0</strong></span>
+                    <span>Canvas: <strong>1100 × 550</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">What is Design?</h2>
+            <p class="section-subtitle reveal">Design is the bridge between ideas and reality. It shapes how we experience the world around us.</p>
+            <div class="about-grid">
+                <div class="about-card reveal">
+                    <div class="about-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
+                    <h3>Purpose-Driven</h3>
+                    <p>Every design decision should serve a purpose. From typography to color, each element communicates a message and guides the user's experience.</p>
+                </div>
+                <div class="about-card reveal">
+                    <div class="about-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <h3>Aesthetic & Functional</h3>
+                    <p>Beautiful design marries aesthetics with functionality. It's not enough to look good — great design works seamlessly and feels intuitive.</p>
+                </div>
+                <div class="about-card reveal">
+                    <div class="about-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5-3.5 6.5L12 19l-3.5-3.5C7 14 5 12 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2"/></svg></div>
+                    <h3>Psychology of Design</h3>
+                    <p>Colors evoke emotions, layouts guide attention, and whitespace creates breathing room. Design leverages human psychology to create impact.</p>
+                </div>
+                <div class="about-card reveal">
+                    <div class="about-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+                    <h3>Iterative Process</h3>
+                    <p>Design is never finished. Through research, prototyping, testing, and refinement, designers continuously improve their creations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DESIGN PRINCIPLES ============ -->
+    <section id="principles" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title reveal">Core Design Principles</h2>
+            <p class="section-subtitle reveal">Master these fundamentals to elevate your design skills.</p>
+            <div class="principles-grid">
+                <div class="principle-card reveal" style="--accent:#ff6b6b">
+                    <div class="principle-number">01</div>
+                    <h3>Contrast</h3>
+                    <p>Create visual hierarchy by making elements noticeably different. Use size, color, weight, and spacing to establish importance.</p>
+                    <div class="principle-demo contrast-demo">
+                        <span class="big">Aa</span><span class="small">Aa</span>
+                    </div>
+                </div>
+                <div class="principle-card reveal" style="--accent:#4ecdc4">
+                    <div class="principle-number">02</div>
+                    <h3>Alignment</h3>
+                    <p>Every element should have a visual connection to something else on the page. Alignment creates order and organization.</p>
+                    <div class="principle-demo alignment-demo">
+                        <div class="align-line"></div>
+                        <div class="align-block b1"></div>
+                        <div class="align-block b2"></div>
+                        <div class="align-block b3"></div>
+                    </div>
+                </div>
+                <div class="principle-card reveal" style="--accent:#ffa62b">
+                    <div class="principle-number">03</div>
+                    <h3>Repetition</h3>
+                    <p>Repeat visual elements throughout a design to create consistency, unity, and a strong visual identity.</p>
+                    <div class="principle-demo repetition-demo">
+                        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    </div>
+                </div>
+                <div class="principle-card reveal" style="--accent:#a29bfe">
+                    <div class="principle-number">04</div>
+                    <h3>Proximity</h3>
+                    <p>Group related items together. Physical closeness implies a relationship between elements.</p>
+                    <div class="principle-demo proximity-demo">
+                        <div class="prox-group"><span></span><span></span><span></span></div>
+                        <div class="prox-group"><span></span><span></span></div>
+                    </div>
+                </div>
+                <div class="principle-card reveal" style="--accent:#fd79a8">
+                    <div class="principle-number">05</div>
+                    <h3>Balance</h3>
+                    <p>Distribute visual weight evenly. Symmetrical or asymmetrical — both create harmony when done right.</p>
+                    <div class="principle-demo balance-demo">
+                        <div class="bal-left"></div>
+                        <div class="bal-center"></div>
+                        <div class="bal-right"></div>
+                    </div>
+                </div>
+                <div class="principle-card reveal" style="--accent:#00cec9">
+                    <div class="principle-number">06</div>
+                    <h3>Whitespace</h3>
+                    <p>Empty space isn't wasted space. It gives elements room to breathe and draws focus to what matters.</p>
+                    <div class="principle-demo whitespace-demo">
+                        <div class="ws-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TOOLS MENU ============ -->
+    <section id="tools" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Interactive Design Tools</h2>
+            <p class="section-subtitle reveal">Play with these live tools to see design concepts in action.</p>
+
+            <div class="tools-tabs reveal">
+                <button class="tool-tab active" data-tool="color-tool"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10a2 2 0 0 0 2-2v-.09a1.65 1.65 0 0 1 3 0v.09a2 2 0 0 0 2 2c5.51 0 10-4.49 10-10S17.51 2 12 2z"/></svg> Color Palette</button>
+                <button class="tool-tab" data-tool="typography-tool"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg> Typography</button>
+                <button class="tool-tab" data-tool="shadow-tool"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> Shadows</button>
+                <button class="tool-tab" data-tool="gradient-tool"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M2 12h20" opacity="0.3"/><path d="M2 7h20" opacity="0.15"/><path d="M2 17h20" opacity="0.5"/></svg> Gradients</button>
+                <button class="tool-tab" data-tool="spacing-tool"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 3H3v18h18V3z"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg> Spacing</button>
+            </div>
+
+            <!-- Color Palette Tool -->
+            <div class="tool-panel active" id="color-tool">
+                <div class="tool-content">
+                    <div class="tool-controls">
+                        <h3>Color Palette Generator</h3>
+                        <p>Pick a base color and explore harmonies.</p>
+                        <label>Base Color</label>
+                        <input type="color" id="base-color" value="#667eea">
+                        <label>Harmony</label>
+                        <select id="color-harmony">
+                            <option value="complementary">Complementary</option>
+                            <option value="analogous">Analogous</option>
+                            <option value="triadic">Triadic</option>
+                            <option value="split">Split Complementary</option>
+                        </select>
+                        <button class="btn btn-small" id="randomize-color"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="1" width="9" height="9" rx="2"/><rect x="14" y="1" width="9" height="9" rx="2"/><rect x="1" y="14" width="9" height="9" rx="2"/><rect x="14" y="14" width="9" height="9" rx="2"/><circle cx="5.5" cy="5.5" r="1"/><circle cx="18.5" cy="5.5" r="1"/><circle cx="5.5" cy="18.5" r="1"/><circle cx="18.5" cy="18.5" r="1"/></svg> Randomize</button>
+                    </div>
+                    <div class="tool-preview">
+                        <div id="palette-display" class="palette-display">
+                            <div class="palette-swatch" id="swatch-1"></div>
+                            <div class="palette-swatch" id="swatch-2"></div>
+                            <div class="palette-swatch" id="swatch-3"></div>
+                            <div class="palette-swatch" id="swatch-4"></div>
+                            <div class="palette-swatch" id="swatch-5"></div>
+                        </div>
+                        <div id="palette-codes" class="palette-codes"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography Tool -->
+            <div class="tool-panel" id="typography-tool">
+                <div class="tool-content">
+                    <div class="tool-controls">
+                        <h3>Typography Explorer</h3>
+                        <p>Adjust font properties in real-time.</p>
+                        <label>Font Family</label>
+                        <select id="font-family">
+                            <option value="'Inter', sans-serif">Inter</option>
+                            <option value="'Playfair Display', serif">Playfair Display</option>
+                            <option value="'Georgia', serif">Georgia</option>
+                            <option value="'Courier New', monospace">Courier New</option>
+                            <option value="'Arial', sans-serif">Arial</option>
+                        </select>
+                        <label>Font Size: <span id="fs-val">32</span>px</label>
+                        <input type="range" id="font-size" min="12" max="80" value="32">
+                        <label>Font Weight: <span id="fw-val">400</span></label>
+                        <input type="range" id="font-weight" min="100" max="900" step="100" value="400">
+                        <label>Letter Spacing: <span id="ls-val">0</span>px</label>
+                        <input type="range" id="letter-spacing" min="-5" max="20" value="0">
+                        <label>Line Height: <span id="lh-val">1.5</span></label>
+                        <input type="range" id="line-height" min="0.8" max="3" step="0.1" value="1.5">
+                        <label>Text Color</label>
+                        <input type="color" id="text-color" value="#333333">
+                    </div>
+                    <div class="tool-preview">
+                        <div id="typo-preview" class="typo-preview">
+                            <p>Design is the silent ambassador of your brand.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shadow Tool -->
+            <div class="tool-panel" id="shadow-tool">
+                <div class="tool-content">
+                    <div class="tool-controls">
+                        <h3>Box Shadow Designer</h3>
+                        <p>Create beautiful shadow effects.</p>
+                        <label>X Offset: <span id="sx-val">0</span>px</label>
+                        <input type="range" id="shadow-x" min="-50" max="50" value="0">
+                        <label>Y Offset: <span id="sy-val">10</span>px</label>
+                        <input type="range" id="shadow-y" min="-50" max="50" value="10">
+                        <label>Blur: <span id="sb-val">30</span>px</label>
+                        <input type="range" id="shadow-blur" min="0" max="100" value="30">
+                        <label>Spread: <span id="ss-val">0</span>px</label>
+                        <input type="range" id="shadow-spread" min="-50" max="50" value="0">
+                        <label>Shadow Color</label>
+                        <input type="color" id="shadow-color" value="#000000">
+                        <label>Opacity: <span id="so-val">0.2</span></label>
+                        <input type="range" id="shadow-opacity" min="0" max="1" step="0.05" value="0.2">
+                    </div>
+                    <div class="tool-preview">
+                        <div id="shadow-preview" class="shadow-preview-box">
+                            <p>Shadow Preview</p>
+                        </div>
+                        <code id="shadow-code" class="code-output"></code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gradient Tool -->
+            <div class="tool-panel" id="gradient-tool">
+                <div class="tool-content">
+                    <div class="tool-controls">
+                        <h3>Gradient Builder</h3>
+                        <p>Design stunning gradient backgrounds.</p>
+                        <label>Color 1</label>
+                        <input type="color" id="grad-color1" value="#667eea">
+                        <label>Color 2</label>
+                        <input type="color" id="grad-color2" value="#764ba2">
+                        <label>Direction: <span id="gd-val">135</span>°</label>
+                        <input type="range" id="grad-direction" min="0" max="360" value="135">
+                        <label>Type</label>
+                        <select id="grad-type">
+                            <option value="linear">Linear</option>
+                            <option value="radial">Radial</option>
+                        </select>
+                        <button class="btn btn-small" id="randomize-grad"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="1" width="9" height="9" rx="2"/><rect x="14" y="1" width="9" height="9" rx="2"/><rect x="1" y="14" width="9" height="9" rx="2"/><rect x="14" y="14" width="9" height="9" rx="2"/><circle cx="5.5" cy="5.5" r="1"/><circle cx="18.5" cy="5.5" r="1"/><circle cx="5.5" cy="18.5" r="1"/><circle cx="18.5" cy="18.5" r="1"/></svg> Random Gradient</button>
+                    </div>
+                    <div class="tool-preview">
+                        <div id="gradient-preview" class="gradient-preview-box"></div>
+                        <code id="gradient-code" class="code-output"></code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spacing Tool -->
+            <div class="tool-panel" id="spacing-tool">
+                <div class="tool-content">
+                    <div class="tool-controls">
+                        <h3>Spacing & Layout</h3>
+                        <p>See how spacing affects visual harmony.</p>
+                        <label>Padding: <span id="sp-val">20</span>px</label>
+                        <input type="range" id="spacing-padding" min="0" max="80" value="20">
+                        <label>Margin: <span id="sm-val">10</span>px</label>
+                        <input type="range" id="spacing-margin" min="0" max="50" value="10">
+                        <label>Border Radius: <span id="sr-val">8</span>px</label>
+                        <input type="range" id="spacing-radius" min="0" max="50" value="8">
+                        <label>Gap: <span id="sg-val">15</span>px</label>
+                        <input type="range" id="spacing-gap" min="0" max="50" value="15">
+                    </div>
+                    <div class="tool-preview">
+                        <div id="spacing-preview" class="spacing-preview">
+                            <div class="space-card">Card 1</div>
+                            <div class="space-card">Card 2</div>
+                            <div class="space-card">Card 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DESIGN EXERCISES ============ -->
+    <section id="exercises" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title reveal">Design Exercises</h2>
+            <p class="section-subtitle reveal">Practice and sharpen your design skills with these interactive challenges.</p>
+
+            <div class="exercises-grid">
+                <!-- Exercise 1: Color Matching -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge">Beginner</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10a2 2 0 0 0 2-2v-.09a1.65 1.65 0 0 1 3 0v.09a2 2 0 0 0 2 2c5.51 0 10-4.49 10-10S17.51 2 12 2z"/></svg> Color Matching Challenge</h3>
+                    <p>Match the target color using RGB sliders. Train your eye for color accuracy.</p>
+                    <div class="exercise-body">
+                        <div class="color-match-area">
+                            <div class="color-target" id="target-color">
+                                <span>Target</span>
+                            </div>
+                            <div class="color-guess" id="guess-color">
+                                <span>Your Color</span>
+                            </div>
+                        </div>
+                        <div class="exercise-controls">
+                            <label>R: <span id="r-val">128</span></label>
+                            <input type="range" id="r-slider" min="0" max="255" value="128">
+                            <label>G: <span id="g-val">128</span></label>
+                            <input type="range" id="g-slider" min="0" max="255" value="128">
+                            <label>B: <span id="b-val">128</span></label>
+                            <input type="range" id="b-slider" min="0" max="255" value="128">
+                        </div>
+                        <div class="exercise-actions">
+                            <button class="btn btn-small" id="check-color">Check Match</button>
+                            <button class="btn btn-small btn-outline" id="new-color">New Color</button>
+                        </div>
+                        <div id="color-result" class="exercise-result"></div>
+                    </div>
+                </div>
+
+                <!-- Exercise 2: Alignment -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge badge-mid">Intermediate</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round"><path d="M21 3H3v18h18V3z"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg> Alignment Puzzle</h3>
+                    <p>Drag the boxes to align them perfectly on the grid. Precision matters!</p>
+                    <div class="exercise-body">
+                        <div class="alignment-grid" id="alignment-grid">
+                            <div class="grid-target" style="left:30px;top:30px"></div>
+                            <div class="grid-target" style="left:120px;top:90px"></div>
+                            <div class="grid-target" style="left:210px;top:30px"></div>
+                            <div class="drag-box" id="drag1" style="left:50px;top:120px">1</div>
+                            <div class="drag-box" id="drag2" style="left:150px;top:20px">2</div>
+                            <div class="drag-box" id="drag3" style="left:100px;top:60px">3</div>
+                        </div>
+                        <div class="exercise-actions">
+                            <button class="btn btn-small" id="check-align">Check Alignment</button>
+                            <button class="btn btn-small btn-outline" id="reset-align">Reset</button>
+                        </div>
+                        <div id="align-result" class="exercise-result"></div>
+                    </div>
+                </div>
+
+                <!-- Exercise 3: Typography Pairing -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge badge-mid">Intermediate</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg> Typography Pairing</h3>
+                    <p>Select the best font pairing for the heading and body text.</p>
+                    <div class="exercise-body">
+                        <div class="typo-exercise-preview" id="typo-exercise-preview">
+                            <h4 id="typo-heading">The Art of Design</h4>
+                            <p id="typo-body">Good typography is invisible. Great typography is unforgettable. The right pairing creates harmony and guides the reader naturally.</p>
+                        </div>
+                        <div class="exercise-controls">
+                            <label>Heading Font</label>
+                            <select id="heading-font">
+                                <option value="'Playfair Display', serif">Playfair Display</option>
+                                <option value="'Inter', sans-serif">Inter</option>
+                                <option value="'Georgia', serif">Georgia</option>
+                                <option value="'Arial Black', sans-serif">Arial Black</option>
+                            </select>
+                            <label>Body Font</label>
+                            <select id="body-font">
+                                <option value="'Inter', sans-serif">Inter</option>
+                                <option value="'Georgia', serif">Georgia</option>
+                                <option value="'Courier New', monospace">Courier New</option>
+                                <option value="'Playfair Display', serif">Playfair Display</option>
+                            </select>
+                        </div>
+                        <div class="exercise-actions">
+                            <button class="btn btn-small" id="rate-pairing">Rate Pairing</button>
+                        </div>
+                        <div id="pairing-result" class="exercise-result"></div>
+                    </div>
+                </div>
+
+                <!-- Exercise 4: Whitespace -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge">Beginner</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18" opacity="0.3"/></svg> Whitespace Mastery</h3>
+                    <p>Adjust the spacing to create the most visually appealing card layout.</p>
+                    <div class="exercise-body">
+                        <div class="ws-exercise" id="ws-exercise">
+                            <div class="ws-card" id="ws-card">
+                                <h4>Beautiful Card</h4>
+                                <p>Whitespace is the design element that gives everything else meaning.</p>
+                                <button class="btn btn-small">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="exercise-controls">
+                            <label>Padding: <span id="ws-p-val">15</span>px</label>
+                            <input type="range" id="ws-padding" min="0" max="60" value="15">
+                            <label>Element Gap: <span id="ws-g-val">8</span>px</label>
+                            <input type="range" id="ws-gap" min="0" max="40" value="8">
+                        </div>
+                        <div class="exercise-actions">
+                            <button class="btn btn-small" id="score-ws">Score Layout</button>
+                        </div>
+                        <div id="ws-result" class="exercise-result"></div>
+                    </div>
+                </div>
+
+                <!-- Exercise 5: Contrast Check -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge badge-adv">Advanced</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> Contrast Checker</h3>
+                    <p>Pick foreground & background colors that meet WCAG accessibility standards.</p>
+                    <div class="exercise-body">
+                        <div class="contrast-preview" id="contrast-preview">
+                            <p id="contrast-text">The quick brown fox jumps over the lazy dog.</p>
+                        </div>
+                        <div class="exercise-controls">
+                            <label>Text Color</label>
+                            <input type="color" id="contrast-fg" value="#333333">
+                            <label>Background Color</label>
+                            <input type="color" id="contrast-bg" value="#ffffff">
+                        </div>
+                        <div class="contrast-info">
+                            <span>Ratio: <strong id="contrast-ratio">12.63:1</strong></span>
+                            <span id="contrast-grade" class="contrast-pass">AAA ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise 6: Grid Layout -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge badge-adv">Advanced</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Grid Layout Builder</h3>
+                    <p>Create a balanced grid layout by adjusting columns and rows.</p>
+                    <div class="exercise-body">
+                        <div class="grid-builder" id="grid-builder">
+                            <div class="gb-item">1</div>
+                            <div class="gb-item">2</div>
+                            <div class="gb-item">3</div>
+                            <div class="gb-item">4</div>
+                            <div class="gb-item">5</div>
+                            <div class="gb-item">6</div>
+                        </div>
+                        <div class="exercise-controls">
+                            <label>Columns: <span id="gc-val">3</span></label>
+                            <input type="range" id="grid-cols" min="1" max="6" value="3">
+                            <label>Gap: <span id="gg-val">10</span>px</label>
+                            <input type="range" id="grid-gap" min="0" max="30" value="10">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise 7: Button Designer -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge badge-mid">Intermediate</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="8" y1="12" x2="16" y2="12"/></svg> Button Designer</h3>
+                    <p>Design the perfect button by adjusting padding, radius, colors, and shadow.</p>
+                    <div class="exercise-body">
+                        <div class="btn-designer-preview">
+                            <button id="designed-btn" class="designed-btn">Click Me</button>
+                        </div>
+                        <div class="exercise-controls">
+                            <label>Background</label>
+                            <input type="color" id="btn-bg" value="#667eea">
+                            <label>Text Color</label>
+                            <input type="color" id="btn-text-color" value="#ffffff">
+                            <label>Padding X: <span id="btn-px-val">24</span>px</label>
+                            <input type="range" id="btn-px" min="8" max="60" value="24">
+                            <label>Padding Y: <span id="btn-py-val">12</span>px</label>
+                            <input type="range" id="btn-py" min="4" max="30" value="12">
+                            <label>Border Radius: <span id="btn-br-val">8</span>px</label>
+                            <input type="range" id="btn-br" min="0" max="50" value="8">
+                            <label>Font Size: <span id="btn-fs-val">16</span>px</label>
+                            <input type="range" id="btn-fs" min="10" max="32" value="16">
+                        </div>
+                        <code id="btn-code" class="code-output"></code>
+                    </div>
+                </div>
+
+                <!-- Exercise 8: Card Builder -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge badge-mid">Intermediate</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/></svg> Card Builder</h3>
+                    <p>Build a beautiful card component by tweaking every visual property.</p>
+                    <div class="exercise-body">
+                        <div class="card-builder-preview" id="card-builder-preview">
+                            <div class="built-card" id="built-card">
+                                <div class="built-card-header" id="built-card-header">Card Title</div>
+                                <div class="built-card-body">Design is thinking made visual. Craft a beautiful card.</div>
+                            </div>
+                        </div>
+                        <div class="exercise-controls">
+                            <label>Card Background</label>
+                            <input type="color" id="card-bg" value="#1a1a2e">
+                            <label>Header Background</label>
+                            <input type="color" id="card-header-bg" value="#667eea">
+                            <label>Border Radius: <span id="card-br-val">12</span>px</label>
+                            <input type="range" id="card-br" min="0" max="30" value="12">
+                            <label>Shadow Blur: <span id="card-shadow-val">20</span>px</label>
+                            <input type="range" id="card-shadow" min="0" max="60" value="20">
+                            <label>Padding: <span id="card-pad-val">20</span>px</label>
+                            <input type="range" id="card-pad" min="5" max="40" value="20">
+                        </div>
+                        <code id="card-code" class="code-output"></code>
+                    </div>
+                </div>
+
+                <!-- Exercise 9: Color Harmony Quiz -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge badge-adv">Advanced</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5"/></svg> Color Harmony Quiz</h3>
+                    <p>Test your knowledge! Identify the correct color harmony type from the palette shown.</p>
+                    <div class="exercise-body">
+                        <div class="harmony-quiz-palette" id="harmony-quiz-palette"></div>
+                        <div class="harmony-quiz-options" id="harmony-quiz-options">
+                            <button class="btn btn-small btn-outline harmony-opt" data-answer="complementary">Complementary</button>
+                            <button class="btn btn-small btn-outline harmony-opt" data-answer="analogous">Analogous</button>
+                            <button class="btn btn-small btn-outline harmony-opt" data-answer="triadic">Triadic</button>
+                            <button class="btn btn-small btn-outline harmony-opt" data-answer="monochromatic">Monochromatic</button>
+                        </div>
+                        <div class="exercise-actions">
+                            <button class="btn btn-small btn-outline" id="new-quiz">Next Question</button>
+                        </div>
+                        <div id="harmony-result" class="exercise-result"></div>
+                    </div>
+                </div>
+
+                <!-- Exercise 10: Responsive Breakpoint Tester -->
+                <div class="exercise-card reveal">
+                    <div class="exercise-badge badge-adv">Advanced</div>
+                    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Responsive Tester</h3>
+                    <p>Resize the preview frame to see how layouts adapt at different breakpoints.</p>
+                    <div class="exercise-body">
+                        <div class="responsive-tester">
+                            <div class="responsive-toolbar">
+                                <button class="btn btn-small resp-size" data-width="320">Mobile</button>
+                                <button class="btn btn-small resp-size" data-width="768">Tablet</button>
+                                <button class="btn btn-small resp-size active" data-width="100%">Desktop</button>
+                            </div>
+                            <div class="responsive-frame" id="responsive-frame">
+                                <div class="resp-demo-layout">
+                                    <div class="resp-header">Header</div>
+                                    <div class="resp-content">
+                                        <div class="resp-sidebar">Sidebar</div>
+                                        <div class="resp-main">Main Content</div>
+                                        <div class="resp-aside">Aside</div>
+                                    </div>
+                                    <div class="resp-footer-demo">Footer</div>
+                                </div>
+                            </div>
+                            <div class="responsive-info">Width: <strong id="resp-width-val">100%</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Design Inspiration Gallery</h2>
+            <p class="section-subtitle reveal">Hover to reveal live effects. Click to explore.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal" style="--hue:0">
+                    <div class="gallery-inner" style="background:linear-gradient(135deg,#ff6b6b,#ee5a24)">
+                        <h3>Bold Typography</h3>
+                        <p>Type can be art</p>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" style="--hue:60">
+                    <div class="gallery-inner" style="background:linear-gradient(135deg,#ffa62b,#f7d794)">
+                        <h3>Warm Palettes</h3>
+                        <p>Evoke emotion</p>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" style="--hue:180">
+                    <div class="gallery-inner" style="background:linear-gradient(135deg,#4ecdc4,#0abde3)">
+                        <h3>Cool Tones</h3>
+                        <p>Create calm</p>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" style="--hue:270">
+                    <div class="gallery-inner" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">
+                        <h3>Depth & Layers</h3>
+                        <p>Add dimension</p>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" style="--hue:330">
+                    <div class="gallery-inner" style="background:linear-gradient(135deg,#fd79a8,#e84393)">
+                        <h3>Vibrant Accents</h3>
+                        <p>Draw attention</p>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" style="--hue:120">
+                    <div class="gallery-inner" style="background:linear-gradient(135deg,#00b894,#55efc4)">
+                        <h3>Natural Harmony</h3>
+                        <p>Organic feel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT / FOOTER ============ -->
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title reveal">Start Your Design Journey</h2>
+            <p class="section-subtitle reveal">Design is a skill you can practice every day. Keep experimenting, keep learning.</p>
+            <div class="quote-box reveal">
+                <blockquote>"Design is not just what it looks like and feels like. Design is how it works."</blockquote>
+                <cite>— Steve Jobs</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span>Innocent</span>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/muhammad-asif10" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/muhammad-asif10" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Designed &amp; Developed by <strong>Muhammad Asif</strong></p>
+            <p>Innocent &copy; 2025 &mdash; Where Design Meets Perfection</p>
+        </div>
+    </footer>
+
+    <!-- ============ CURSOR FOLLOWER ============ -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
